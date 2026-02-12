@@ -3,270 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Richard A T | Data Analyst Portfolio</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-<!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
 <style>
-:root{
---bg:#f5f7fa;
---card:#fff;
---primary:#0066cc;
---secondary:#6366f1;
---text:#1a202c;
---muted:#4a5568;
---border:#e2e8f0;
---grad:linear-gradient(135deg,#0066cc,#6366f1);
---shadow:0 4px 15px rgba(0,0,0,.08);
+
+/* ================= VARIABLES ================= */
+
+:root {
+    --color-bg: #f5f7fa;
+    --color-surface: #ffffff;
+    --color-surface-elevated: #f0f4f9;
+    --color-accent: #0066cc;
+    --color-accent-secondary: #6366f1;
+    --color-text: #1a202c;
+    --color-text-muted: #4a5568;
+    --color-border: #e2e8f0;
+    --gradient-primary: linear-gradient(135deg, #0066cc 0%, #6366f1 100%);
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 24px rgba(0, 102, 204, 0.12);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+/* ================= RESET ================= */
 
-body{
-font-family:'DM Sans',sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.7;
-overflow-x:hidden;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Animated Background */
-#particles-js{
-position:fixed;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#eef2ff,#f5f7fa);
-z-index:-2;
+/* ================= BODY ================= */
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
-/* Container */
-.container{
-max-width:1300px;
-margin:auto;
-padding:0 2rem;
+/* ================= DATA BACKGROUND ================= */
+
+#dataBG {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(135deg, #f5f7fa, #eef2ff);
 }
 
-/* Navbar */
-nav{
-position:sticky;
-top:0;
-background:rgba(255,255,255,.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--border);
-z-index:1000;
+/* ================= CONTAINER ================= */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
 }
 
-nav .container{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:1.5rem 0;
+/* ================= NAV ================= */
+
+nav {
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border);
 }
 
-.logo{
-font-family:'IBM Plex Mono';
-font-size:1.5rem;
-background:var(--grad);
--webkit-background-clip:text;
-color:transparent;
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
+    margin: 1rem 0;
+}
+
+/* ================= SECTIONS ================= */
+
+section {
+    padding: 8rem 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display';
+    font-size: 3.5rem;
+}
+
+/* ================= GRID ================= */
+
+.skills-grid,
+.projects-grid,
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category,
+.project-card,
+.cert-item,
+.timeline-content {
+    background: var(--color-surface);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 3rem;
+    text-align: center;
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3rem;
 }
 
 .nav-links{
-display:flex;
-gap:2rem;
-list-style:none;
+    display:none;
 }
 
-.nav-links a{
-text-decoration:none;
-color:var(--muted);
-font-weight:500;
 }
 
-.nav-links a:hover{
-color:var(--primary);
-}
-
-#muteBtn{
-border:1px solid var(--border);
-background:#fff;
-padding:.5rem 1rem;
-border-radius:6px;
-cursor:pointer;
-}
-
-/* Hero */
-.hero{
-min-height:90vh;
-display:flex;
-align-items:center;
-}
-
-.hero h1{
-font-family:'Playfair Display';
-font-size:4rem;
-background:var(--grad);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.hero-sub{
-font-size:1.4rem;
-color:var(--muted);
-margin:1rem 0;
-}
-
-.btns{
-display:flex;
-gap:1rem;
-margin-top:2rem;
-}
-
-.btn{
-padding:.9rem 2rem;
-border-radius:8px;
-text-decoration:none;
-font-weight:600;
-}
-
-.primary{
-background:var(--grad);
-color:#fff;
-}
-
-.secondary{
-border:2px solid var(--border);
-color:var(--text);
-}
-
-/* Sections */
-section{
-padding:6rem 0;
-opacity:0;
-transform:translateY(40px);
-transition:.8s;
-}
-
-section.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-.title{
-text-align:center;
-margin-bottom:3rem;
-}
-
-.title h2{
-font-size:3rem;
-font-family:'Playfair Display';
-}
-
-/* Cards */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:2rem;
-}
-
-.card{
-background:var(--card);
-padding:2rem;
-border-radius:15px;
-border:1px solid var(--border);
-box-shadow:var(--shadow);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-border-color:var(--primary);
-}
-
-/* Projects */
-.project h3{margin:.5rem 0}
-
-.badge{
-display:inline-block;
-background:rgba(0,102,204,.1);
-color:var(--primary);
-padding:.3rem .8rem;
-border-radius:20px;
-font-size:.75rem;
-margin:.2rem;
-}
-
-/* Contact */
-#contact{
-background:#fff;
-border-radius:20px;
-padding:4rem 2rem;
-text-align:center;
-box-shadow:var(--shadow);
-}
-
-.links{
-display:flex;
-justify-content:center;
-gap:1.5rem;
-margin-top:2rem;
-flex-wrap:wrap;
-}
-
-.links a{
-padding:.8rem 1.5rem;
-background:#f0f4f9;
-border-radius:10px;
-text-decoration:none;
-color:var(--text);
-border:1px solid var(--border);
-}
-
-.links a:hover{
-background:var(--grad);
-color:#fff;
-}
-
-/* Scroll Bar */
-#scroll{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:var(--grad);
-z-index:2000;
-}
-
-@media(max-width:768px){
-.hero h1{font-size:2.5rem}
-.nav-links{display:none}
-}
 </style>
 </head>
 
 <body>
 
-<!-- Background -->
-<div id="particles-js"></div>
+<!-- Animated Background -->
+<canvas id="dataBG"></canvas>
 
-<!-- Sounds -->
-<audio id="clickSound">
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8d33b6fcb4.mp3?filename=click-124467.mp3">
-</audio>
+<!-- ================= NAV ================= -->
 
-<audio id="scrollSound">
-<source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0e52c1cc3b.mp3?filename=interface-124464.mp3">
-</audio>
-
-<div id="scroll"></div>
-
-<!-- Navbar -->
 <nav>
 <div class="container">
+
 <div class="logo">Portfolio</div>
 
 <ul class="nav-links">
@@ -276,202 +216,247 @@ z-index:2000;
 <li><a href="#contact">Contact</a></li>
 </ul>
 
-<button id="muteBtn">🔊 Sound</button>
 </div>
 </nav>
 
-<!-- Hero -->
+<!-- ================= HERO ================= -->
+
 <section class="hero visible">
 <div class="container">
 
 <h1>Richard A T</h1>
 
-<p class="hero-sub">Data Analyst & ML Enthusiast</p>
-
-<p>Transforming data into actionable insights with modern analytics and machine learning.</p>
-
-<div class="btns">
-<a href="#projects" class="btn primary">View Work</a>
-<a href="#contact" class="btn secondary">Contact</a>
+<div class="hero-subtitle">
+Data Analyst & ML Enthusiast
 </div>
+
+<p>
+Transforming data into actionable insights using analytics and machine learning.
+</p>
 
 </div>
 </section>
 
-<!-- About -->
+<!-- ================= ABOUT ================= -->
+
 <section id="about">
 <div class="container">
 
-<div class="title">
-<h2>About Me</h2>
+<div class="section-header">
+<h2 class="section-title">About Me</h2>
 </div>
 
-<div class="grid">
+<div class="timeline-content">
 
-<div class="card">
-<h3>Education</h3>
-<p>B.Sc Computer Technology (2023-2026)</p>
+<p><b>B.Sc Computer Technology (2023–2026)</b></p>
 <p>CGPA: 7.7</p>
-</div>
 
-<div class="card">
-<h3>Focus</h3>
-<p>Data Analytics, ML, Visualization, Python</p>
-</div>
+<p>
+Focused on data analytics, ML and software development.
+</p>
 
 </div>
+
 </div>
 </section>
 
-<!-- Skills -->
+<!-- ================= SKILLS ================= -->
+
 <section id="skills">
 <div class="container">
 
-<div class="title">
-<h2>Skills</h2>
+<div class="section-header">
+<h2 class="section-title">Skills</h2>
 </div>
 
-<div class="grid">
+<div class="skills-grid">
 
-<div class="card">Python, SQL</div>
-<div class="card">Pandas, NumPy</div>
-<div class="card">Power BI, Matplotlib</div>
-<div class="card">Scikit-learn</div>
-<div class="card">MySQL</div>
-<div class="card">Git, Excel</div>
+<div class="skill-category">Python</div>
+<div class="skill-category">SQL</div>
+<div class="skill-category">Pandas & NumPy</div>
+<div class="skill-category">Power BI</div>
+<div class="skill-category">Scikit-learn</div>
+<div class="skill-category">MySQL</div>
 
 </div>
+
 </div>
 </section>
 
-<!-- Projects -->
+<!-- ================= PROJECTS ================= -->
+
 <section id="projects">
 <div class="container">
 
-<div class="title">
-<h2>Projects</h2>
+<div class="section-header">
+<h2 class="section-title">Projects</h2>
 </div>
 
-<div class="grid">
+<div class="projects-grid">
 
-<div class="card project">
+<div class="project-card">
 <h3>AI Credit Risk</h3>
-<p>ML-based credit scoring system.</p>
-<span class="badge">ML</span>
-<span class="badge">Finance</span>
+<p>ML based credit scoring system.</p>
 </div>
 
-<div class="card project">
+<div class="project-card">
 <h3>OptiPrice AI</h3>
-<p>Dynamic pricing system.</p>
-<span class="badge">Python</span>
-<span class="badge">Time Series</span>
+<p>Dynamic pricing engine.</p>
 </div>
 
-<div class="card project">
+<div class="project-card">
 <h3>Health Prediction</h3>
-<p>Medical risk prediction.</p>
-<span class="badge">SVM</span>
-<span class="badge">RF</span>
+<p>Healthcare ML model.</p>
 </div>
 
 </div>
+
 </div>
 </section>
 
-<!-- Contact -->
+<!-- ================= CONTACT ================= -->
+
 <section id="contact">
 <div class="container">
 
-<div class="title">
-<h2>Contact</h2>
+<div class="section-header">
+<h2 class="section-title">Contact</h2>
 </div>
 
-<p>Let’s connect for opportunities 🚀</p>
-
-<div class="links">
-
-<a href="mailto:richardat125@gmail.com">📧 Email</a>
-<a href="https://linkedin.com/in/richard-a-t" target="_blank">💼 LinkedIn</a>
-<a href="https://github.com/ATR1285" target="_blank">💻 GitHub</a>
-
-</div>
+<p>Email: richardat125@gmail.com</p>
+<p>GitHub: github.com/ATR1285</p>
+<p>LinkedIn: linkedin.com/in/richard-a-t</p>
 
 </div>
 </section>
 
-<footer style="text-align:center;padding:2rem;color:#666">
+<!-- ================= FOOTER ================= -->
+
+<footer>
 © 2025 Richard A T
 </footer>
 
-<!-- Scripts -->
+<!-- ================= SCRIPT ================= -->
+
 <script>
 
-/* Particles */
-particlesJS("particles-js",{
-particles:{
-number:{value:80},
-color:{value:"#0066cc"},
-size:{value:3},
-line_linked:{
-enable:true,
-color:"#6366f1",
-opacity:.2
-},
-move:{speed:1.5}
+/* SECTION ANIMATION */
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+    });
+
+}, { threshold: 0.2 });
+
+document.querySelectorAll("section")
+.forEach(sec => observer.observe(sec));
+
+
+/* ================= DATA BACKGROUND ================= */
+
+const canvas = document.getElementById("dataBG");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
-});
 
-/* Section Animation */
-const observer=new IntersectionObserver(e=>{
-e.forEach(i=>{
-if(i.isIntersecting)i.target.classList.add("visible");
-});
-},{threshold:.2});
+resize();
+window.addEventListener("resize", resize);
 
-document.querySelectorAll("section").forEach(s=>observer.observe(s));
 
-/* Scroll + Sound */
-const scrollSound=document.getElementById("scrollSound");
-let last=0;
+class DataLine{
 
-window.addEventListener("scroll",()=>{
+    constructor(y){
+        this.y = y;
+        this.offset = Math.random()*1000;
+        this.speed = 0.4 + Math.random();
+    }
 
-const top=window.scrollY;
-const h=document.body.scrollHeight-innerHeight;
-document.getElementById("scroll").style.width=(top/h)*100+"%";
+    draw(t){
 
-const now=Date.now();
-if(now-last>400){
-scrollSound.volume=.2;
-scrollSound.currentTime=0;
-scrollSound.play();
-last=now;
+        ctx.beginPath();
+        ctx.moveTo(0,this.y);
+
+        for(let x=0;x<canvas.width;x+=40){
+
+            const wave =
+            Math.sin((x+t+this.offset)*0.01)*20;
+
+            ctx.lineTo(x,this.y+wave);
+        }
+
+        ctx.strokeStyle="rgba(0,102,204,0.15)";
+        ctx.lineWidth=2;
+        ctx.stroke();
+
+        this.offset+=this.speed;
+    }
 }
-});
 
-/* Click Sound */
-const clickSound=document.getElementById("clickSound");
 
-document.querySelectorAll("a,button").forEach(e=>{
-e.addEventListener("click",()=>{
-clickSound.currentTime=0;
-clickSound.play();
-});
-});
+/* GRID */
 
-/* Mute */
-let muted=false;
-const btn=document.getElementById("muteBtn");
+function drawGrid(){
 
-btn.onclick=()=>{
-muted=!muted;
-clickSound.muted=muted;
-scrollSound.muted=muted;
-btn.textContent=muted?"🔇 Muted":"🔊 Sound";
-};
+    ctx.strokeStyle="rgba(0,0,0,0.03)";
+    ctx.lineWidth=1;
+
+    for(let x=0;x<canvas.width;x+=90){
+        ctx.beginPath();
+        ctx.moveTo(x,0);
+        ctx.lineTo(x,canvas.height);
+        ctx.stroke();
+    }
+
+    for(let y=0;y<canvas.height;y+=90){
+        ctx.beginPath();
+        ctx.moveTo(0,y);
+        ctx.lineTo(canvas.width,y);
+        ctx.stroke();
+    }
+}
+
+
+/* CREATE LINES */
+
+const lines=[];
+
+for(let i=0;i<7;i++){
+
+    lines.push(
+        new DataLine(
+        (canvas.height/9)*(i+2)
+        )
+    );
+
+}
+
+
+/* LOOP */
+
+function animate(t){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    drawGrid();
+
+    lines.forEach(line=>{
+        line.draw(t);
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 
 </script>
 
 </body>
 </html>
+
